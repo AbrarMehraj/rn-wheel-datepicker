@@ -1,18 +1,39 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'rn-wheel-datepicker';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import WheelDatePicker from 'rn-wheel-datepicker';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  const [isModalVisible, setModalVisible] = React.useState(false);
+  const [selectedDate, setSelectedDate] = React.useState({
+    display: '',
+    date: '',
+  });
 
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
 
+  const onSubmitDate = (date: any) => {
+    setSelectedDate(date);
+    console.log(date);
+  };
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>Hello</Text>
+      <Button title="Show/Hide Date picker" onPress={toggleModal} />
+      {isModalVisible && (
+        <WheelDatePicker
+          show={isModalVisible}
+          onClose={toggleModal}
+          onSubmitDate={(val: any) => onSubmitDate(val)}
+          onBackdropPress={toggleModal}
+          caption={'Date of Birth'}
+          minDate={new Date('2016-12-31')}
+          maxDate={new Date()}
+          selectedDate={selectedDate.date}
+        />
+      )}
     </View>
   );
 }

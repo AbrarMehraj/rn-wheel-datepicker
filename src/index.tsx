@@ -1,3 +1,3 @@
-export function multiply(a: number, b: number): Promise<number> {
-  return Promise.resolve(a * b);
-}
+import WheelDatePicker from './component/WheelDatePicker';
+
+export default WheelDatePicker;
