@@ -1,6 +1,6 @@
 {
   "name": "rn-wheel-datepicker",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The React Native Wheel Date Picker provides an intuitive and user-friendly way for users to select a date, which can improve the overall user experience of the application. ",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",

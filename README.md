@@ -101,6 +101,11 @@ onClose| func
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
 
+## Documentation
+See [github page](https://github.com/AbrarMehraj/rn-wheel-datepicker)for documentation and more info.
+
+
+
 ## License
 
 MIT
