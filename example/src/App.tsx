@@ -10,30 +10,30 @@ export default function App() {
     date: '',
   });
 
-  const toggleModal = () => {
+  const toggleDatePicker = () => {
     setModalVisible(!isModalVisible);
   };
 
   const onSubmitDate = (date: any) => {
     setSelectedDate(date);
-    console.log(date);
   };
+
   return (
     <View style={styles.container}>
-      <Text>Hello</Text>
-      <Button title="Show/Hide Date picker" onPress={toggleModal} />
-      {isModalVisible && (
-        <WheelDatePicker
-          show={isModalVisible}
-          onClose={toggleModal}
-          onSubmitDate={(val: any) => onSubmitDate(val)}
-          onBackdropPress={toggleModal}
-          caption={'Date of Birth'}
-          minDate={new Date('2016-12-31')}
-          maxDate={new Date()}
-          selectedDate={selectedDate.date}
-        />
-      )}
+      <Text>Selected Date :</Text>
+      <Text>{selectedDate.date}</Text>
+      <Text>{selectedDate.display}</Text>
+      <Button title="Show Date picker" onPress={toggleDatePicker} />
+      <WheelDatePicker
+        show={isModalVisible}
+        onClose={toggleDatePicker}
+        onSubmitDate={(val: any) => onSubmitDate(val)}
+        onBackdropPress={toggleDatePicker}
+        caption={'Date of Birth'}
+        minDate={new Date('2016-12-31')}
+        maxDate={new Date()}
+        selectedDate={selectedDate.date}
+      />
     </View>
   );
 }

@@ -1,6 +1,6 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import React, { useState, useEffect, useRef } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 import Modal from 'react-native-modal';
 
 const months = [
@@ -158,7 +158,6 @@ type Props = {
   animationOutTiming?: number;
 
   //   style properties start
-  containerStyle?: any;
   modalContainerStyle?: Object;
   pickercontainerStyle?: Object;
   modalContentStyle?: Object;
@@ -166,16 +165,13 @@ type Props = {
   pickerItemStyle?: Object;
   captionStyle?: Object;
   submitStyle?: Object;
-
   submitTextStyle?: Object;
 
   //   style properties start
   caption?: string;
   submitLabel?: string;
   pickerProps?: any;
-  defaultValue?: any;
   onSubmitDate: any;
-  borderRadius?: any;
 
   minDate?: Date;
   maxDate?: Date;
@@ -212,7 +208,7 @@ function WheelDatePicker(props: Props) {
 
     const days: number[] = getDays(
       selectedDate.getFullYear(),
-      selectedDate.getMonth() + 1,
+      selectedDate.getMonth() + 1
     );
 
     const years: number[] = getYears(minDate, maxDate);
@@ -244,7 +240,7 @@ function WheelDatePicker(props: Props) {
         days,
       });
     } else {
-      setState({...state, selectedMonth: item, days});
+      setState({ ...state, selectedMonth: item, days });
     }
   };
 
@@ -258,7 +254,7 @@ function WheelDatePicker(props: Props) {
         days,
       });
     } else {
-      setState({...state, days, selectedYear: item});
+      setState({ ...state, days, selectedYear: item });
     }
   };
 
@@ -266,15 +262,15 @@ function WheelDatePicker(props: Props) {
     // Get the number of days in the current month
     const numDays = new Date(year, month, 0).getDate();
     // Create a list of days for the current month
-    const days: any = Array.from({length: numDays}, (_, i) => i + 1);
+    const days: any = Array.from({ length: numDays }, (_, i) => i + 1);
     return days;
   };
 
   const getYears = (minDate: Date, maxDate: Date) => {
     // const currentYear = new Date().getFullYear(); // gets the current year
     const years: number[] = Array.from(
-      {length: maxDate.getFullYear() - minDate.getFullYear() + 1},
-      (_, i) => minDate.getFullYear() + i,
+      { length: maxDate.getFullYear() - minDate.getFullYear() + 1 },
+      (_, i) => minDate.getFullYear() + i
     );
     return years;
   };
@@ -316,15 +312,16 @@ function WheelDatePicker(props: Props) {
             selectedValue={state.selectedDay}
             itemStyle={[styles.itemStyle, props.pickerItemStyle]}
             onValueChange={(itemValue: number) =>
-              setState({...state, selectedDay: itemValue})
+              setState({ ...state, selectedDay: itemValue })
             }
-            {...props.pickerProps}>
+            {...props.pickerProps}
+          >
             {state.days.map(
-              (item: {toString: () => string}, i: React.Key | undefined) => {
+              (item: { toString: () => string }, i: React.Key | undefined) => {
                 return (
                   <Picker.Item key={i} value={item} label={item.toString()} />
                 );
-              },
+              }
             )}
           </Picker>
         </View>
@@ -335,7 +332,8 @@ function WheelDatePicker(props: Props) {
             onValueChange={(itemValue: any, itemIndex: any) => {
               onMonthChange(itemValue, itemIndex);
             }}
-            {...props.pickerProps}>
+            {...props.pickerProps}
+          >
             {state.months.map((item: string | number, i: number) => {
               return (
                 <Picker.Item key={i} value={i + 1} label={item.toString()} />
@@ -348,7 +346,8 @@ function WheelDatePicker(props: Props) {
             selectedValue={state.selectedYear}
             itemStyle={[styles.itemStyle, props.pickerItemStyle]}
             onValueChange={(itemValue: any) => onYearChange(itemValue)}
-            {...props.pickerProps}>
+            {...props.pickerProps}
+          >
             {state.years.map((item: string | number, i: number) => {
               return (
                 <Picker.Item key={i} value={item} label={item.toString()} />
@@ -359,7 +358,8 @@ function WheelDatePicker(props: Props) {
       </View>
       <TouchableOpacity
         style={[styles.submit, props.submitStyle]}
-        onPress={onSubmit}>
+        onPress={onSubmit}
+      >
         <Text style={[styles.submitText, props.submitTextStyle]}>
           {props.submitLabel ? props.submitLabel : 'Submit'}
         </Text>
@@ -377,7 +377,8 @@ function WheelDatePicker(props: Props) {
       animationOut={props.animationOut}
       animationInTiming={props.animationInTiming}
       animationOutTiming={props.animationOutTiming}
-      style={[styles.modalContainer, props.modalContainerStyle]}>
+      style={[styles.modalContainer, props.modalContainerStyle]}
+    >
       {renderContent()}
     </Modal>
   );
