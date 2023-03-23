@@ -1,6 +1,10 @@
 # rn-wheel-datepicker
 
-Wheel Date Picker
+The React Native Wheel Date Picker provides an intuitive and user-friendly way for users to select a date, which can improve the overall user experience of the application.
+
+## Screenshot
+
+![App Screenshot](https://github.com/AbrarMehraj/rn-wheel-datepicker/blob/main/example/assets/screenshot.png?raw=true)
 
 ## Installation
 
@@ -102,7 +106,7 @@ onClose| func
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
 
 ## Documentation
-See [github page](https://github.com/AbrarMehraj/rn-wheel-datepicker)for documentation and more info.
+See [github page] (https://github.com/AbrarMehraj/rn-wheel-datepicker)for documentation and more info.
 
 
 
